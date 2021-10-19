@@ -1,0 +1,17 @@
+.app-container {
+  margin: 6rem auto;
+  padding: 0;
+  border: 1px solid #dcdcdc;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 2px #cecece;
+  height: 75vh;
+  width: 60vw;
+
+  overflow: hidden;
+  background-color: white;
+}
+
+.student-list {
+  height: 75vh;
+  overflow-y: scroll;
+}

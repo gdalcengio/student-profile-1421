@@ -26,10 +26,13 @@ function App() {
   }
 
   return (
-    <div className="student-list">
-      {studentData.students.map((student, index) => (
-        <Student key={student.id} student={student} />
-      ))}
+    // app container helps with border-radius/overflow conflict
+    <div className="app-container">
+      <div className="student-list">
+        {studentData.students.map((student, index) => (
+          <Student key={student.id} student={student} />
+        ))}
+      </div>
     </div>
   );
 }

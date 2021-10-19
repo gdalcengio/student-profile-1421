@@ -4,6 +4,12 @@ body {
     "Roboto", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #efefef;
+  overflow: hidden;
+}
+
+p {
+  font-weight: 200;
 }
 
 code {
