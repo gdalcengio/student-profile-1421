@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="student-list">
       {studentData.students.map((student, index) => (
-        <Student key={student.id} student={student} average="test average" />
+        <Student key={student.id} student={student} />
       ))}
     </div>
   );
