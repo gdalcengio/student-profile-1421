@@ -1,3 +1,5 @@
+import "./Student.css";
+
 function Student(props) {
   //setting up unique id for testing
   const nameId = `name${props.student.id}`;
@@ -15,7 +17,7 @@ function Student(props) {
   return (
     <div className="student">
       <img src={props.student.pic} alt="profile of user" />
-      <h1 id={nameId}>
+      <h1 id={nameId} className="student-name">
         {props.student.firstName} {props.student.lastName}
       </h1>
       <p id={emailId}>Email: {props.student.email}</p>
