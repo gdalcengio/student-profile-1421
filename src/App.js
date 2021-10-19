@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 import Student from "./Student";
+import Search from "./Search";
 
 function App() {
   const [studentData, setStudentData] = useState(null);
@@ -28,6 +29,7 @@ function App() {
   return (
     // app container helps with border-radius/overflow conflict
     <div className="app-container">
+      <Search />
       <div className="student-list">
         {studentData.students.map((student, index) => (
           <Student key={student.id} student={student} />

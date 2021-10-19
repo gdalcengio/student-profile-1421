@@ -6,6 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #efefef;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 p {
