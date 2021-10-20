@@ -1,5 +1,17 @@
 import "./Student.css";
 
+function Grades(props) {
+  return (
+    <ul className="grades">
+      {props.grades.map((grade, index) => (
+        <li key={index} className="test">
+          Test {index + 1}: &emsp; {grade}%
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function Student(props) {
   //setting up unique id for testing
   const nameId = `name${props.student.id}`;
@@ -30,6 +42,8 @@ function Student(props) {
           <p id={skillId}>Skill: {props.student.skill}</p>
           <p id={averageId}>Average: {average}%</p>
         </div>
+
+        <Grades grades={grades} />
       </div>
     </div>
   );
