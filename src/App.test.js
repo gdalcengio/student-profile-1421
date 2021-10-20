@@ -46,22 +46,22 @@ it("sets state of student data from api", async () => {
   });
 
   //test name
-  expect(container.querySelector("#name1").textContent).toBe(
+  expect(container.querySelector(".student-name").textContent).toBe(
     sample.students[0].firstName + " " + sample.students[0].lastName
   );
 
   //test email
-  expect(container.querySelector("#email1").textContent).toBe(
+  expect(container.querySelector(".student-email").textContent).toBe(
     "Email: " + sample.students[0].email
   );
 
   //test company
-  expect(container.querySelector("#company1").textContent).toBe(
+  expect(container.querySelector(".student-company").textContent).toBe(
     "Company: " + sample.students[0].company
   );
 
   //test skill
-  expect(container.querySelector("#skill1").textContent).toBe(
+  expect(container.querySelector(".student-skill").textContent).toBe(
     "Skill: " + sample.students[0].skill
   );
 
