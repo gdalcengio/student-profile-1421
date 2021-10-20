@@ -1,3 +1,7 @@
+import { useState } from "react";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
+
 import "./Student.css";
 
 function Grades(props) {
@@ -13,6 +17,8 @@ function Grades(props) {
 }
 
 function Student(props) {
+  const [display, setDisplay] = useState(false);
+
   //setting up unique id for testing
   const nameId = `name${props.student.id}`;
   const emailId = `email${props.student.id}`;
@@ -24,6 +30,10 @@ function Student(props) {
   const grades = props.student.grades.map((grade) => Number(grade));
   const average = grades.reduce((total, val) => total + val) / grades.length;
 
+  function handleClick() {
+    setDisplay(!display);
+  }
+
   return (
     <div className="student">
       <img
@@ -31,6 +41,7 @@ function Student(props) {
         className="student-img"
         alt="profile of user"
       />
+
       <div className="student-info">
         <h1 id={nameId} className="student-name">
           {props.student.firstName} {props.student.lastName}
@@ -42,9 +53,16 @@ function Student(props) {
           <p id={skillId}>Skill: {props.student.skill}</p>
           <p id={averageId}>Average: {average}%</p>
         </div>
-
-        <Grades grades={grades} />
+        {display ? <Grades grades={grades} /> : ""}
       </div>
+
+      <button onClick={() => handleClick()} className="grades-button">
+        {display ? (
+          <RemoveRoundedIcon sx={{ fontSize: 60 }} />
+        ) : (
+          <AddRoundedIcon sx={{ fontSize: 60 }} />
+        )}
+      </button>
     </div>
   );
 }

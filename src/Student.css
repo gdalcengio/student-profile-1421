@@ -40,4 +40,25 @@
 
 .test {
   margin: 0 0.5rem;
+  padding: 0;
+}
+
+.grades-button {
+  margin: 1rem;
+  margin-left: auto;
+  padding: 1rem;
+  width: 4rem;
+  height: 4rem;
+  background: white;
+  color: #aaaaaa;
+
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grades-button:hover {
+  color: #000000;
+  cursor: pointer;
 }
