@@ -19,26 +19,6 @@ function App() {
     }
   }
 
-  function handleSearch(event) {
-    //get data
-    const query = event.target.value.toLowerCase().trim();
-    const students = studentData.students;
-
-    //filter data
-    const regex = new RegExp(query, "i");
-    // console.log(regex);
-    const result = students.filter((student) => {
-      const fullName = `${student.firstName} ${student.lastName}`;
-      return fullName.search(regex) !== -1;
-    });
-
-    //set students array
-    setStudents(result);
-
-    // console.log(query);
-    // console.log(result);
-  }
-
   //on load or component change
   useEffect(() => {
     fetchStudentData();
@@ -52,13 +32,18 @@ function App() {
   }, [studentData]);
 
   if (!studentData) {
-    return "loading...";
+    return (
+      <div className="app-container">
+        <div className="student-list">
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    // app container helps with border-radius/overflow conflict
     <div className="app-container">
-      <Search handleSearch={(event) => handleSearch(event)} />
+      <Search students={studentData.students} setStudents={setStudents} />
       <div className="student-list">
         {students.map((student, index) => (
           <Student key={student.id} student={student} />

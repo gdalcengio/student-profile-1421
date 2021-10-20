@@ -1,3 +1,4 @@
+/* app container helps with border-radius/overflow conflict  */
 .app-container {
   margin: 6rem auto;
   padding: 1rem;
