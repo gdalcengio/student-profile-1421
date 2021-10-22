@@ -31,12 +31,21 @@ function App() {
     }
   }, [studentData]);
 
+  // function setTag(string, i) {
+  //   const newStudents = studentData.students.map((student, index) => {
+  //     if (index === i) {
+  //       student.tag.push(string);
+  //     }
+  //   });
+  //   return i;
+  // }
+
   if (!studentData) {
     return (
       <div className="app-container">
-        <div className="student-list">
-          <p>Loading...</p>
-        </div>
+        <p>Loading...</p>
+        {/* <div className="student-list">
+        </div> */}
       </div>
     );
   }

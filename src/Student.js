@@ -19,19 +19,17 @@ function Grades(props) {
 function Student(props) {
   const [display, setDisplay] = useState(false);
 
-  //setting up unique id for testing
-  // const nameId = `name${props.student.id}`;
-  // const emailId = `email${props.student.id}`;
-  // const companyId = `company${props.student.id}`;
-  // const skillId = `skill${props.student.id}`;
-  // const averageId = `average${props.student.id}`;
-
   //gets average to display
   const grades = props.student.grades.map((grade) => Number(grade));
   const average = grades.reduce((total, val) => total + val) / grades.length;
 
   function handleClick() {
     setDisplay(!display);
+  }
+
+  function handleAddTag(e) {
+    e.preventDefault();
+    console.log(e.target[0].value);
   }
 
   return (
@@ -54,6 +52,14 @@ function Student(props) {
           <p className="student-average">Average: {average}%</p>
         </div>
         {display ? <Grades grades={grades} /> : ""}
+
+        <form onSubmit={(e) => handleAddTag(e)} className="tag-form">
+          <input
+            type="text"
+            placeholder="Add a tag"
+            className="tag-text"
+          ></input>
+        </form>
       </div>
 
       <button onClick={() => handleClick()} className="grades-button">

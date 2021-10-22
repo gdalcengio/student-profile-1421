@@ -43,6 +43,16 @@
   padding: 0;
 }
 
+.tag-form {
+  margin: 1rem 3rem;
+  max-width: 50%;
+}
+
+.tag-text {
+  margin: 0.5rem;
+  padding-left: 0 !important;
+}
+
 .grades-button {
   margin: 1rem;
   margin-left: auto;
