@@ -31,21 +31,29 @@ function App() {
     }
   }, [studentData]);
 
-  // function setTag(string, i) {
-  //   const newStudents = studentData.students.map((student, index) => {
-  //     if (index === i) {
-  //       student.tag.push(string);
-  //     }
-  //   });
-  //   return i;
-  // }
+  function setTag(string, i) {
+    const newStudents = studentData.students.map((student) => {
+      if (student.id === i) {
+        //check if tag array and tag exists then create if not
+        if (student.tags) {
+          if (!student.tags.includes(string)) {
+            student.tags.push(string);
+          }
+        } else {
+          student.tags = [string];
+        }
+      }
+      return student;
+    });
+
+    //set new students with tag to re-render
+    setStudents(newStudents);
+  }
 
   if (!studentData) {
     return (
       <div className="app-container">
         <p>Loading...</p>
-        {/* <div className="student-list">
-        </div> */}
       </div>
     );
   }
@@ -54,8 +62,8 @@ function App() {
     <div className="app-container">
       <Search students={studentData.students} setStudents={setStudents} />
       <div className="student-list">
-        {students.map((student, index) => (
-          <Student key={student.id} student={student} />
+        {students.map((student) => (
+          <Student key={student.id} student={student} setTag={setTag} />
         ))}
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
+import Tags from "./Tags";
 
 import "./Student.css";
 
@@ -29,7 +30,8 @@ function Student(props) {
 
   function handleAddTag(e) {
     e.preventDefault();
-    console.log(e.target[0].value);
+    // console.log(e.target[0].value);
+    props.setTag(e.target[0].value, props.student.id);
   }
 
   return (
@@ -51,7 +53,10 @@ function Student(props) {
           <p className="student-skill">Skill: {props.student.skill}</p>
           <p className="student-average">Average: {average}%</p>
         </div>
+
         {display ? <Grades grades={grades} /> : ""}
+
+        {props.student.tags ? <Tags tags={props.student.tags} /> : ""}
 
         <form onSubmit={(e) => handleAddTag(e)} className="tag-form">
           <input

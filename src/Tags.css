@@ -1,0 +1,13 @@
+.tag-list {
+  list-style: none;
+  display: flex;
+}
+
+.tag {
+  margin: 0.2rem;
+  padding: 1rem 0.5rem;
+  border-radius: 0.3rem;
+  background: #e0e0e0;
+  color: black;
+  font-weight: 400;
+}
