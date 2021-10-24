@@ -23,6 +23,7 @@ const sample = {
       firstName: "Ingaberg",
       id: "1",
       lastName: "Orton",
+      tags: ["tag1", "tag2"],
     },
     {
       firstName: "Clarke",
@@ -33,11 +34,12 @@ const sample = {
       firstName: "Laurens",
       id: "3",
       lastName: "Romanet",
+      tags: ["tag1", "tag3"],
     },
   ],
 };
 
-it("updates on change", () => {
+it("should update on change", () => {
   const setStudents = (students) => {
     return students;
   };
@@ -49,13 +51,20 @@ it("updates on change", () => {
     );
   });
 
+  //name
   const searchInput = container.querySelector(".search-bar");
   fireEvent.change(searchInput, { target: { value: "test" } });
 
   expect(searchInput.value).toBe("test");
+
+  //tag
+  const tagInput = container.querySelector(".tag-bar");
+  fireEvent.change(tagInput, { target: { value: "tag test" } });
+
+  expect(tagInput.value).toBe("tag test");
 });
 
-it("returns empty", () => {
+it("should return empty", () => {
   let list = [];
   const setStudents = (students) => {
     list = students;
@@ -68,12 +77,18 @@ it("returns empty", () => {
     );
   });
 
+  //search
   const searchInput = container.querySelector(".search-bar");
   fireEvent.change(searchInput, { target: { value: "test" } });
   expect(list.length).toBe(0);
+
+  const tagInput = container.querySelector(".tag-bar");
+  fireEvent.change(searchInput, { target: { value: "" } });
+  fireEvent.change(tagInput, { target: { value: "testing" } });
+  expect(list.length).toBe(0);
 });
 
-it("returns 1 result", () => {
+it("should return 1 result on name search", () => {
   let list = [];
   const setStudents = (students) => {
     list = students;
@@ -98,6 +113,31 @@ it("returns 1 result", () => {
   expect(list.length).toBe(1);
 });
 
+it("should return proper results on tag search", () => {
+  let list = [];
+  const setStudents = (students) => {
+    list = students;
+  };
+
+  act(() => {
+    render(
+      <Search students={sample.students} setStudents={setStudents} />,
+      container
+    );
+  });
+
+  const tagInput = container.querySelector(".tag-bar");
+  fireEvent.change(tagInput, { target: { value: "tag2" } });
+  expect(list.length).toBe(1);
+  expect(list[0].tags[0]).toBe("tag1");
+
+  fireEvent.change(tagInput, { target: { value: "tag3" } });
+  expect(list.length).toBe(1);
+
+  fireEvent.change(tagInput, { target: { value: "tag1" } });
+  expect(list.length).toBe(2);
+});
+
 it("returns all results", () => {
   let list = [];
   const setStudents = (students) => {
@@ -112,9 +152,13 @@ it("returns all results", () => {
   });
 
   const searchInput = container.querySelector(".search-bar");
+  const tagInput = container.querySelector(".tag-bar");
   fireEvent.change(searchInput, { target: { value: "a" } });
   expect(list.length).toBe(3);
 
   fireEvent.change(searchInput, { target: { value: "E" } });
   expect(list.length).toBe(3);
+
+  fireEvent.change(tagInput, { target: { value: "a" } });
+  expect(list.length).toBe(2);
 });

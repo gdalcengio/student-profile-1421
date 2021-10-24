@@ -66,7 +66,7 @@ function Search(props) {
       <input
         type="text"
         placeholder="Search by tag"
-        className="search-bar"
+        className="tag-bar"
         onChange={(event) => handleTag(event)}
       />
     </div>
