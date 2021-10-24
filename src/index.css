@@ -1,13 +1,17 @@
+html,
 body {
-  margin: 0;
   font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #efefef;
   overflow: hidden;
   box-sizing: border-box;
-  font-weight: 200;
 }
 
 code {
@@ -16,13 +20,17 @@ code {
 }
 
 input[type="text"] {
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Helvetica Neue", sans-serif;
   box-sizing: border-box;
-  padding: 1rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  margin-bottom: 1rem;
   border: none;
   border-bottom: 1px solid #e8e8e8;
   width: 100%;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 input[type="text"]:focus {
