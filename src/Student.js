@@ -30,8 +30,9 @@ function Student(props) {
 
   function handleAddTag(e) {
     e.preventDefault();
-    // console.log(e.target[0].value);
-    props.setTag(e.target[0].value, props.student.id);
+    const tagInput = e.target[0];
+    props.setTag(tagInput.value, props.student.id);
+    tagInput.value = "";
   }
 
   return (
